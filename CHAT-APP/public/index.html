@@ -1,0 +1,47 @@
+<!-- client side -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHAT-APP</title>
+</head>
+<body>
+    <h1><b>CHAT-APP</b></h1>
+
+    <input id="message" type="text" placeholder="enter message">
+    <button id="send">send</button>
+
+    <!-- <button onclick="createConnection()">Create web socket connection</button> -->
+</body>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    /*function createConnection() {
+        const socket = io();
+    }*/
+
+    const socket = io();
+
+    const sendBtn = document.querySelector("#send")
+    const messageInput = document.querySelector("#message")
+
+    socket.on("message", message => console.log(message))
+
+    sendBtn.addEventListener("click", () => {
+        /* socket.emit("chat message", sendMsg.value);
+         sendMsg.value = "";*/
+        /*socket.emit("chat message", {
+            message: sendMsg.value,
+            username: "User"
+        });
+        sendMsg.value = ""; */
+        const message = messageInput.value;
+        // console.log(message);
+        // emit - send
+        socket.emit("chat message", message);
+    });
+// each message has its associated id
+// const socket = io('http://localhost:3000');
+// http://localhost:9000/socket.io/socket.io.js | browser -> devloper tools -> sources -> top -> localhost -> socket.io -> socket.io.js
+</script>
+</html>
