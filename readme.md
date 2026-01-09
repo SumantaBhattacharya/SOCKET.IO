@@ -1,3 +1,115 @@
+<style>
+   .heading {
+      border-bottom: 2px solid white; 
+      color: #30D8FB; 
+      font-size: 2rem; 
+      font-weight: bold; 
+      display: inline-block;
+   }
+   .head {
+      /* text-decoration: underline;  */
+      border-bottom: 2px solid white;
+      /* color: #86774D;  */
+      font-size: 2rem; 
+      font-weight: bold;
+      display: inline-block; 
+   }
+
+   .para {
+      color: #86774D; 
+      font-size: 1rem;  
+   }
+
+</style>
+
+<h4 class="heading">Sockets</h4>
+
+A Socket is one end of a connection
+
+<h4 class="heading">Protocols</h4>
+
+*Communication rules*
+
+*`TCP`(Transmission Control Protocol)*
+- *Reliable*
+- *slow*
+- *Connection oriented*
+- *Bidirectional (Both sides can send and receive data simultaneously)*
+- *e.g., `HTTP`*
+
+*`UDP`(User Datagram Protocol)*
+- *Less reliable*
+- *fast*
+- *Connectionless oriented (Both sides can send and receive data simultaneously)*
+- *Bidirectional*
+- *e.g., `WebRTC`*
+
+<h4 style="border-bottom: 2px solid white; color: #fff;font-size: 2rem; font-weight: bold; display: inline-block;">
+   <span style="color: #30D8FB;">
+      WebRTC
+   </span> 
+   for Video Communication
+</h4> 
+
+<h4 class="para">Web Real Time Communication</h4>
+
+<!-- It basically helps to have a direct communication between two users without intervention of server once the connection is established by the seerver -->
+
+> *WebRTC enables direct browser-to-browser communication for real-time media, using servers only for initial connection setup*
+
+#### ***WebRTC connection stages:***
+- i. ***Signaling***.
+  - i.i. *signaling server*
+  - i.ii. *used by the* `SDP (Session Description Protocol)`
+  - i.iii. `SDP` *contents*
+    - i.iii.i. **Session Metadata** *such as* origin, timing 
+    - i.iii.ii. Media Descriptions *such as* audio/video formats
+    - i.iii.iii. Connection Data *such as* IP addresses, ports
+- ii. ***Connecting***.
+  - ii.i. *`ICE (Interactive Connectivity Establishment)` establishes the most reliable and suited Network/connection path between peers (users/devices) for communication*
+- iii. ***Securing***. 
+  - iii.i. *encryption*
+  - iii.ii. *`DTLS (Datagram Transport Layer Security)`*
+      - iii.ii.i. *Secures Ongoing Control Messages*
+      - iii.ii.ii. *Secures Data channel (Media Data like chat, file transfer)*
+      - iii.ii.iii. *Generate secret keys for `SRTP`*
+      - iii.ii.iv. *Provides `i. Authentication` - only the intended information goes to the intended reciever only, `ii.Verification` - data goes to the intended reciever of the transferred data only, `iii.Integrity` - data is not modified in transit and `iv.confidentiality` - only the reciever of the data whom the sender is intent to send the data can decrypt it*
+   - iii.iii. *`SRTP (Secure Real-time Transport Protocol)`*
+      - iii.iii.i. *Encrypt Media Streams (Audio/Video)*
+   - iii.iv. *`DTLS` and `SRTP` work together to create a double-layered security system for `WebRTC`.*
+- iv. ***Communicating***.
+
+<!-- ICE basically identifies all the possible network paths and choose the best one of them for communication. -->
+
+<h4 class="heading">WebRTC</h4>
+
+1. MediaStream
+2. RTCPeerConnection
+3. RTCDataChannel
+
+<!-- https://strapi.videosdk.live/uploads/Chat_GPT_Image_Apr_8_2025_03_28_09_PM_min_a50f18164c.png -->
+
+<h4 style="border-bottom: 2px solid white; color: #fff;font-size: 2rem; font-weight: bold; display: inline-block;">
+   <span style="color: #30D8FB;">
+      WebRTC
+   </span> 
+   Architecture
+</h4>
+
+<h4> <i class="para">P2P</i> <i>(Peer to Peer) </i></h4>
+
+![Peer-to-Peer-(P2P)-Architecture](https://media.geeksforgeeks.org/wp-content/uploads/20240515175702/Peer-to-Peer-(P2P)-Architecture.webp)
+
+<h4> <i class="para">SFU</i> <i>(Selective Forwarding Unit)</i></h4>
+
+![sfu](sfu.png)
+
+Each participant send its media stream to the server, and recieves all the other's media from it.
+
+<h4> <i class="para">MCU</i> <i>(Multipoint Control Unit)</i></h4>
+
+![https://docs.mirotalk.com/images/mcu.png](https://docs.mirotalk.com/images/mcu.png)
+
 # ***Web Socket***
 [![What is WebSocket? Why is it used & how is it different from HTTP?](https://img.youtube.com/vi/favi7avxIag/hqdefault.jpg)](https://youtu.be/favi7avxIag?si=IdTwQnLBQpNod7ys)
 
@@ -23,7 +135,7 @@
 * ***The server does'nt have to wait for the client requests to push back any data and the client does'nt have to create a new conection to send any data to the server***
 
 - ***We generally use Web Scokets for building real time systems where the client has to very frequently send the data to the server or vice versa(where the client has to very frequently send the data to the server)***
-  * ***eg- Tranding apps***
+  * ***eg- Trading apps***
     * [Tranding apps](https://www.wsj.com/market-data/stocks)
 
 ```
